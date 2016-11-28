@@ -1,7 +1,10 @@
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
@@ -14,7 +17,7 @@ public class GameWindow {
     static ArrayList <String> code;
     static ArrayList <String> rootMsg;
     public static String lastLine;
-
+    static int C = 1;
     public GameWindow() {
 
         lastLine = new String("");
@@ -27,13 +30,18 @@ public class GameWindow {
 
     public static Scene createGameWindow(){
 
-    //Kontrolki
+        //Kontrolki
         Label label = new Label("Tu bedzie sie gralo");
+        TextArea konsolaTextField = new TextArea( );
         Button sklepButton = new Button("SKLEP");
         Button achievementsButton = new Button("OSIĄGNIĘCIA");
         Button exitButton = new Button("WYJŚCIE");
 
-    //Akcje przycisków
+        //Ustawienia parametów kontrolek
+        konsolaTextField.setPrefWidth(300);
+        konsolaTextField.setPrefHeight(500);
+        konsolaTextField.setEditable(false);
+        //Akcje przycisków
         //zamykanie okna gry
         exitButton.setOnAction(e -> View.exitGame());
 
@@ -45,16 +53,29 @@ public class GameWindow {
 
 
 
-    //Layout
+        //Layout
         //tworzenie layoutu
         VBox layout = new VBox(10);
         layout.setPadding(new Insets(20, 20, 20, 20));
 
         //dodanie kontrolek do layoutu
-        layout.getChildren().addAll(label, sklepButton, achievementsButton, exitButton);
+        layout.getChildren().addAll(konsolaTextField, label, sklepButton, achievementsButton, exitButton);
 
         //rozmiar okna
-        window = new Scene(layout, 300, 200);
+        window = new Scene(layout, 500, 300);
+
+        //Nasluchiwanie klikania
+        konsolaTextField.setText("dupa");
+
+        window.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+
+                konsolaTextField.appendText(Integer.toString(C) + "\n");
+                C++;
+            }
+        });
+
 
         return window;
 
