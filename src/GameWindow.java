@@ -66,8 +66,7 @@ public class GameWindow {
 
         //Nasluchiwanie klikania
         konsolaTextField.setText("dupa");
-
-        window.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        konsolaTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
 
