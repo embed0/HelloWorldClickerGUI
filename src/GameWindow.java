@@ -3,10 +3,13 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -17,7 +20,12 @@ public class GameWindow {
     static ArrayList <String> code;
     static ArrayList <String> rootMsg;
     public static String lastLine;
-    static int C = 1;
+    static int tmp;
+    static FileInputStream file;
+
+
+
+
     public GameWindow() {
 
         lastLine = new String("");
@@ -32,10 +40,13 @@ public class GameWindow {
 
         //Kontrolki
         Label label = new Label("Tu bedzie sie gralo");
-        TextArea konsolaTextField = new TextArea( );
+        TextField konsolaTextField = new TextField();
         Button sklepButton = new Button("SKLEP");
         Button achievementsButton = new Button("OSIĄGNIĘCIA");
         Button exitButton = new Button("WYJŚCIE");
+
+        //Wczytywanie kodu do konsoli
+
 
         //Ustawienia parametów kontrolek
         konsolaTextField.setPrefWidth(300);
@@ -64,15 +75,52 @@ public class GameWindow {
         //rozmiar okna
         window = new Scene(layout, 500, 300);
 
-        //Nasluchiwanie klikania
-        konsolaTextField.setText("dupa");
 
-        window.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        //czytanie pliku
+        StringBuilder s = new StringBuilder(GameWindow.lastLine);
+
+        try {
+            file = new FileInputStream("crapCode.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+        //Nasluchiwanie klikania
+        code = user.getUserCode();
+
+
+        konsolaTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
+                try {
+                    tmp = file.read();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if (tmp != -1) {
+                    if (tmp == 10) {
+                        //GameWindow.user.addCode(GameWindow.lastLine);
+                        lastLine = "";
+                    } else {
+                        GameWindow.lastLine = s.append((char) tmp).toString();
+                        GameWindow.user.addBug();
+                    }
+                    for(int i = 0; i < code.size(); i++)
+                        konsolaTextField.setText(code.get(i));
+                    konsolaTextField.appendText(lastLine);
 
-                konsolaTextField.appendText(Integer.toString(C) + "\n");
-                C++;
+
+                }
+                else {
+                    try {
+                        file.reset();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         });
 

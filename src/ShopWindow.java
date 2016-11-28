@@ -21,6 +21,8 @@ public class ShopWindow {
     }
 
     public Scene createShopWindow() {
+
+
     //Kontrolki
         Label label = new Label("Tu bedzie sie kupowało");
         Button returnButton = new Button("POWRÓT");
