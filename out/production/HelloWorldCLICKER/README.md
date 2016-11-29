@@ -1,1 +1,0 @@
-# HelloWorldClicker
