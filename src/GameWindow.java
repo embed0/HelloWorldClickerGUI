@@ -22,12 +22,11 @@ public class GameWindow {
     public static String lastLine;
     static int tmp, rootmsgsize;
     static FileInputStream file;
-
-
+    static Label bugsLabel;
 
 
     public GameWindow() {
-
+        bugsLabel = new Label();
         lastLine = new String("");
         user = new User();
         keyStrokeListener = new KeyStrokeListener();
@@ -41,16 +40,22 @@ public class GameWindow {
         createGameWindow();
     }
 
-    public static Scene createGameWindow(){
+    public void bugsLabelUpdate()
+    {
+        bugsLabel.setText("Bugs:" + user.getBugs() + " | Modyfikator Bugów: " + user.getBugsPerSecond());
+    }
+
+
+    public Scene createGameWindow(){
 
         //Kontrolki
-        Label label = new Label("Ilosc Bugow: 0");
         TextArea konsolaTextArea = new TextArea();
         TextArea rootTextArea = new TextArea();
         Button sklepButton = new Button("SKLEP");
         Button achievementsButton = new Button("OSIĄGNIĘCIA");
         Button exitButton = new Button("WYJŚCIE");
-
+            //wyswietlenie bugsLabelUpdate
+            bugsLabelUpdate();
 
 
         //Ustawienia parametów kontrolek
@@ -80,7 +85,7 @@ public class GameWindow {
         layout.setPadding(new Insets(20, 20, 20, 20));
 
         //dodanie kontrolek do layoutu
-        layout.getChildren().addAll(label, konsolaTextArea, rootTextArea,  sklepButton, achievementsButton, exitButton);
+        layout.getChildren().addAll(bugsLabel, konsolaTextArea, rootTextArea,  sklepButton, achievementsButton, exitButton);
 
         //rozmiar okna
         window = new Scene(layout, 600, 500);
@@ -142,8 +147,7 @@ public class GameWindow {
                 }
 
                 // zmiana ilosci bugow
-                label.setText("Ilosc Bugow:" + user.getBugs());
-
+                bugsLabelUpdate();
 
             }
         });

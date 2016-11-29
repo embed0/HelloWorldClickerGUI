@@ -24,7 +24,7 @@ public class ShopWindow {
 
 
     //Kontrolki
-        Label label = new Label("Tu bedzie sie kupowało");
+        Label label = GameWindow.bugsLabel;
         Button returnButton = new Button("POWRÓT");
         Button exitButton = new Button("WYJŚCIE");
 
@@ -71,7 +71,7 @@ public class ShopWindow {
 //
 //        else{
 //            row1.addComponent(new Label("cena: " + (items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch())), Terminal.Color.GREEN));
-//        row1.addComponent(new Button("KUP!", new Action() {
+//            row1.addComponent(new Button("KUP!", new Action() {
 //                    @Override
 //                    public void doAction() {
 //                        items.get(actualPage).addItem();
