@@ -43,6 +43,7 @@ public class Item {
         return basicPrice;
     }
 
+
     public long getBugsGrowth() {
         return bugsGrowth;
     }

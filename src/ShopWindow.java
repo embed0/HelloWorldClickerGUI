@@ -16,7 +16,6 @@ public class ShopWindow {
     Label bugsLabel;
     Label label;
     Label nazwaItemu;
-    //Label ikonaItemu;
     ImageView ikonaItemu;
     Label posiadanaIlosc;
     Label przyrostBugow;
@@ -40,13 +39,13 @@ public class ShopWindow {
     }
 
     public float cenaUpdate(int color) {
-
-        cena.setText("cena: " + (items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch())));
+        float nowaCena = (items.get(actualPage).getBasicPrice() + items.get(actualPage).getBasicPrice()*(items.get(actualPage).getHowMuch()));
+        cena.setText("cena: " + nowaCena);
         // 1 to zielona , 0 to czerwona
         if (color == 1) cena.setTextFill(Color.GREEN);
         if (color == 0) cena.setTextFill(Color.RED);
 
-        return (items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch()));
+        return nowaCena;
     }
 
     public void currentItemUpdate() {
@@ -90,6 +89,8 @@ public class ShopWindow {
             GameWindow.user.setItemCount(1);
             GameWindow.user.minusBugs(items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch()-1));
             GameWindow.user.setBugsPerSecond(items.get(actualPage).getBugsGrowth());
+            currentItemUpdate();
+            items.get(actualPage).setBasicPrice(items.get(actualPage).getBasicPrice()*2);
             currentItemUpdate();
         });
 

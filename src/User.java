@@ -71,8 +71,6 @@ public class User {
     }
 
     public void addMessage(String msg){
-        //if (rootMessages.size() > 3)
-        // rootMessages.remove(0);
         rootMessages.add(msg);
     }
     public double getBugsPerSecond () {

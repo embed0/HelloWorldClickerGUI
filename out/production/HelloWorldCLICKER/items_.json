@@ -11,14 +11,14 @@
 		{
 			"name": "Programista senior",
 			"basicPrice": 50,
-			"bugsGrowth": 2,
+			"bugsGrowth": 5,
 			"icon": "2.png"
 		},
 
 		{
 			"name": "Programista junior",
 			"basicPrice": 150,
-			"bugsGrowth": 3,
+			"bugsGrowth": 12,
 			"icon": "3.png"
 		},
 
@@ -26,21 +26,21 @@
 		{
 			"name": "Student",
 			"basicPrice": 280,
-			"bugsGrowth": 4,
+			"bugsGrowth": 20,
 			"icon": "4.png"
 		},
 
 		{
 			"name": "Firma",
 			"basicPrice": 400,
-			"bugsGrowth": 5,
+			"bugsGrowth": 25,
 			"icon": "5.png"
 		},
 
 		{
 			"name": "Virusy",
-			"basicPrice": 750,
-			"bugsGrowth": 7,
+			"basicPrice": 1050,
+			"bugsGrowth": 50,
 			"icon": "6.png"
 		}
 
