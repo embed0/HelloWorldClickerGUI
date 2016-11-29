@@ -63,7 +63,8 @@ public class User {
     public void addBug() {
         bugs += bugsPerSecond;
         if (bugs >= bugThreshold) {
-            addMessage("system@root: Brawo! Stworzyles " + bugThreshold + " " + achievments.getAchievments().get("Stworzyles"));
+            //addMessage("system@root: Brawo! Stworzyles " + bugThreshold + " bugów" + achievments.getAchievments().get("Stworzyles"));
+            addMessage("system@root: Brawo! Stworzyles " + bugThreshold + " bugów.");
             achievmentsList.add(bugThreshold + " zrobionych bugow");
             bugThreshold *= 2;
         }
