@@ -4,6 +4,7 @@ public class Item {
     private long basicPrice;
     private long bugsGrowth;
     private String icon;
+
     private int howMuch;
 
     public Item(String _name, Long _basicPrice, Long _bugsGrowth, String _icon)

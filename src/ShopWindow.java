@@ -2,6 +2,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
@@ -14,7 +16,8 @@ public class ShopWindow {
     Label bugsLabel;
     Label label;
     Label nazwaItemu;
-    Label ikonaItemu;
+    //Label ikonaItemu;
+    ImageView ikonaItemu;
     Label posiadanaIlosc;
     Label przyrostBugow;
     Label cena;
@@ -29,7 +32,8 @@ public class ShopWindow {
         cena = new Label();
         kupButton = new Button("KUP");
         nazwaItemu = new Label();
-        ikonaItemu = new Label();
+        //ikonaItemu = new Label();
+        ikonaItemu = new ImageView();
         posiadanaIlosc = new Label();
         przyrostBugow = new Label();
         prevPageButton = new Button ("POPRZEDNIE");
@@ -49,7 +53,10 @@ public class ShopWindow {
         bugsLabel = GameWindow.bugsLabel;
         label = new Label("W sklepie możesz zatrudnić osoby, które pomogą Ci produkować bugi");
         nazwaItemu.setText(items.get(actualPage).getName());
-        ikonaItemu.setText(items.get(actualPage).getIcon());
+
+        //ikonaItemu.setText(items.get(actualPage).getIcon());
+        ikonaItemu.setImage(new Image(items.get(actualPage).getIcon()));
+
         posiadanaIlosc.setText("posiadana ilość: " + items.get(actualPage).getHowMuch());
         przyrostBugow.setText("przyrost bugów: " + items.get(actualPage).getBugsGrowth());
         if (GameWindow.user.getBugs() < (items.get(actualPage).getBasicPrice() * (items.get(actualPage).getHowMuch() + 1) )) {
@@ -127,46 +134,9 @@ public class ShopWindow {
         );
 
             //rozmiar okna
-        window = new Scene(layout, 500, 500);
+        window = new Scene(layout, 500, 700);
 
 
         return window;
     }
 }
-
-//        window.addComponent(row1);
-//        Panel nxtPrvPanel = new Panel("", Panel.Orientation.HORISONTAL);
-//        if (actualPage > 0){
-//            nxtPrvPanel.addComponent(new Button("poprzednie", new Action() {
-//                @Override
-//                public void doAction() {
-//                    actualPage--;
-//                    createShopWindow();
-//                }
-//            }));
-//        }
-//        if(actualPage < 5) {
-//            nxtPrvPanel.addComponent(new Button("następne", new Action() {
-//                @Override
-//                public void doAction() {
-//                    actualPage++;
-//                    createShopWindow();
-//                }
-//            }));
-//        }
-//        window.addComponent(nxtPrvPanel);
-//        Panel panel = new Panel("", Panel.Orientation.HORISONTAL);
-//        panel.addComponent(new Button("powrót", new Action() {
-//            @Override
-//            public void doAction() {
-//                View.startGame();
-//            }
-//        }));
-//        panel.addComponent(new Button("zakończ grę", new Action() {
-//            @Override
-//            public void doAction() {
-//                //View.exitGame();
-//            }
-//        }));
-//        window.addComponent(panel);
-

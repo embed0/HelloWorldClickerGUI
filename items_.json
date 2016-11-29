@@ -5,54 +5,21 @@
 			"name": "Palec do pisania",
 			"basicPrice": 1,
 			"bugsGrowth": 1,
-			"icon": [
-				"	 / &        ",
-				"	 / &        ",
-				"	 / &  &&&   ",
-				"	 / &  &  &* ",
-				"&  &/       & &",
-				" &            &",
-				"	&          &",
-				"	 /        / ",
-				"	 #        % ",
-				"	 (&&&&&&&&/ "
-			]
+			"icon": "1.png"
 		},
 
 		{
 			"name": "Programista senior",
 			"basicPrice": 50,
 			"bugsGrowth": 2,
-			"icon": [
-				"         .`                                 ``  ",
-				"       `.ys``                             `-so.`",
-				"   ```.yy`.yy``        ````````````` ````:yo .hs",
-				" `-yyyyyyyyyyyy````````oyyyyyyyyyyy+`+mdhs      ",
-				"-yyys          yhyyyyyy-           /hdds        ",
-				"-ys...`        mN.   sy:.`         /do          ",
-				"-ys.....`  ::  mN`   sy:...`       +ms          ",
-				"  -ys...... `NN`       oy:.....` +mo            ",
-				"   `.yyyyddmm`           +sssyyhh+              ",
-				"	                                             "
-			]
+			"icon": "2.png"
 		},
 
 		{
 			"name": "Programista junior",
 			"basicPrice": 150,
 			"bugsGrowth": 3,
-			"icon": [
-				"   oooooooo    ",
-				"  o        o   ",
-				" o  ^    ^  o  ",
-				" o  ?    ?  o  ",
-				"{      \\     }",
-				"|     _|     |",
-				" \\          /",
-				"  \\  (--)  /   ",
-				"   \\      /    ",
-				"	\\yyy/      "
-			]
+			"icon": "3.png"
 		},
 
 
@@ -60,54 +27,21 @@
 			"name": "Student",
 			"basicPrice": 280,
 			"bugsGrowth": 4,
-			"icon": [
-				" /(        |\\/ )         ",
-				"{  \\    .-' o  \\         ",
-				" `, \\    `-- ,__\\        ",
-				"   \\_\\,    )^^^,--_      ",
-				"	`\\/-__/:-,'    `,     ",
-				"	  `-__.:-|  (>  |     ",
-				"		   ':-\\____/ _---'",
-				"		  /__---__\\-'     ",
-				"			\\ | /         ",
-				"		  ,_/ | |         "
-			]
+			"icon": "4.png"
 		},
 
 		{
 			"name": "Firma",
 			"basicPrice": 400,
 			"bugsGrowth": 5,
-			"icon": [
-				"	/\\   ",
-				"	<>    ",
-				"	<>    ",
-				"   /~~\\ ",
-				"  /~~~~\\",
-				" |[][][]|",
-				" |[][][]|",
-				" |[|--|]|",
-				" |[|  |]|",
-				" ========"
-			]
+			"icon": "5.png"
 		},
 
 		{
 			"name": "Virusy",
 			"basicPrice": 750,
 			"bugsGrowth": 7,
-			"icon": [
-				" ._________________.",
-				" | _______________ |",
-				" | I             I |",
-				" | I             I |",
-				" | I  MICROSOFT  I |",
-				" | I             I |",
-				" | I_____________I |",
-				" !_________________!",
-				" ___._[_______]_.___",
-				"!___________________!"
-			]
+			"icon": "6.png"
 		}
 
 	]
