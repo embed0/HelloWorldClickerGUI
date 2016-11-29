@@ -50,7 +50,7 @@
           <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/User.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="986">
+                <state relative-caret-position="1088">
                   <caret line="74" column="20" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="20" />
                   <folding />
                 </state>
@@ -112,8 +112,8 @@
           <file leaf-file-name="GameWindow.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/GameWindow.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="218">
-                  <caret line="96" column="42" selection-start-line="96" selection-start-column="42" selection-end-line="96" selection-end-column="42" />
+                <state relative-caret-position="371">
+                  <caret line="72" column="42" selection-start-line="72" selection-start-column="42" selection-end-line="72" selection-end-column="42" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -692,12 +692,12 @@
       <workItem from="1480348316692" duration="5000" />
       <workItem from="1480361969844" duration="31000" />
       <workItem from="1480365722031" duration="3297000" />
-      <workItem from="1480415752721" duration="3699000" />
+      <workItem from="1480415752721" duration="4753000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87943000" />
+    <option name="totallyTimeSpent" value="88997000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1374" y="-469" width="1382" height="784" extended-state="6" />
@@ -1119,7 +1119,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
+        <state relative-caret-position="1088">
           <caret line="74" column="20" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="20" />
           <folding />
         </state>
@@ -1127,8 +1127,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GameWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="96" column="42" selection-start-line="96" selection-start-column="42" selection-end-line="96" selection-end-column="42" />
+        <state relative-caret-position="371">
+          <caret line="72" column="42" selection-start-line="72" selection-start-column="42" selection-end-line="72" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

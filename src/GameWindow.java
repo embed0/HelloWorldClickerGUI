@@ -55,11 +55,11 @@ public class GameWindow {
 
         //Ustawienia parametów kontrolek
             konsolaTextArea.setPrefWidth(300);
-            konsolaTextArea.setPrefHeight(500);
+            konsolaTextArea.setPrefHeight(300);
             konsolaTextArea.setEditable(false);
 
             rootTextArea.setPrefWidth(300);
-            rootTextArea.setPrefHeight(250);
+            rootTextArea.setPrefHeight(200);
             rootTextArea.setEditable(false);
 
         //Akcje przycisków
@@ -83,7 +83,7 @@ public class GameWindow {
         layout.getChildren().addAll(konsolaTextArea, rootTextArea, label, sklepButton, achievementsButton, exitButton);
 
         //rozmiar okna
-        window = new Scene(layout, 500, 500);
+        window = new Scene(layout, 600, 500);
 
 
         //Nasluchiwanie klikania
@@ -95,6 +95,14 @@ public class GameWindow {
             konsolaTextArea.appendText("\n" + line);
         }
         konsolaTextArea.appendText("\n" + lastLine);
+
+        rootMsg = user.getRootMessages();
+        for( String line : rootMsg)
+        {
+            rootTextArea.appendText("\n" + line);
+        }
+
+
 
         //  Czytanie i dodawanie nowego kodu
 
