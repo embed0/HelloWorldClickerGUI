@@ -11,64 +11,82 @@ public class ShopWindow {
     private Scene window;
     private List<Item> items;
     private int actualPage;
-
+    Label bugsLabel;
+    Label label;
+    Label nazwaItemu;
+    Label ikonaItemu;
+    Label posiadanaIlosc;
+    Label przyrostBugow;
+    Label cena;
+    Button kupButton;
 
     public ShopWindow() {
         Items i = new Items();
         items = i.getItems();
         actualPage = 0;
+        cena = new Label();
+        kupButton = new Button("KUP");
+    }
+
+    public void cenaUpdate(int color) {
+        System.out.print("\ncenaUpdate");
+        cena.setText("cena: " + (items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch())));
+        // 1 to zielona , 0 to czerwona
+        if (color == 1)
+            cena.setTextFill(Color.GREEN);
+        else cena.setTextFill(Color.RED);
+    }
+
+    public void currentItemUpdate() {
+        View.gameWindow.bugsLabelUpdate();
+        bugsLabel = GameWindow.bugsLabel;
+        label = new Label("W sklepie możesz zatrudnić osoby, które pomogą Ci produkować bugi");
+        nazwaItemu = new Label(items.get(actualPage).getName());
+        ikonaItemu = new Label(items.get(actualPage).getIcon());
+        posiadanaIlosc = new Label("posiadana ilość: " + items.get(actualPage).getHowMuch());
+        przyrostBugow = new Label("przyrost bugów: " + items.get(actualPage).getBugsGrowth());
+        if (GameWindow.user.getBugs() < (items.get(actualPage).getBasicPrice() * (items.get(actualPage).getHowMuch() + 1) + 1)) {
+            cenaUpdate(0);
+            kupButton.setDisable(true);
+        } else {
+            System.out.print("tu robie\n");
+            cenaUpdate(1);
+            kupButton.setDisable(false);
+        }
     }
 
     public Scene createShopWindow() {
 
-
-    //Kontrolki
-        Label bugsLabel = GameWindow.bugsLabel;
-        Label label = new Label("W sklepie możesz zatrudnić osoby, które pomogą Ci produkować bugi");
-        Label nazwaItemu = new Label(items.get(actualPage).getName());
-        Label ikonaItemu = new Label(items.get(actualPage).getIcon());
-        Label posiadanaIlosc = new Label("posiadana ilość: " + items.get(actualPage).getHowMuch());
-        Label przyrostBugow = new Label("przyrost bugów: " + items.get(actualPage).getBugsGrowth());
-        Label cena = new Label("cena: " + (items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch())));
-        Button kupButton = new Button("KUP");
-
-
-        if (GameWindow.user.getBugs() < (items.get(actualPage).getBasicPrice() * (items.get(actualPage).getHowMuch()+1) +1))
-        {
-            cena.setTextFill(Color.RED);
-            kupButton.setDisable(true);
-        }
-        else
-        {
-            cena.setTextFill(Color.GREEN);
-            kupButton.setDisable(false);
-            kupButton.setOnAction(e -> {
-                        items.get(actualPage).addItem();
-                        GameWindow.user.setItemCount(1);
-                        GameWindow.user.minusBugs(items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch()-1));
-                        GameWindow.user.setBugsPerSecond(items.get(actualPage).getBugsGrowth());
-                        View.gameWindow.bugsLabelUpdate();
-            });
-        }
-
+        //Wczytanie obecnego przedmiotu wraz z kontrolkami
+        currentItemUpdate();
 
 
         Button returnButton = new Button("POWRÓT");
         Button exitButton = new Button("WYJŚCIE");
 
-    //Akcje przycisków
-        //zamykanie okna gry
+        //Akcje przycisków
+
+            //klikniecie w przycisku KUP
+        kupButton.setOnAction(e -> {
+            items.get(actualPage).addItem();
+            GameWindow.user.setItemCount(1);
+            GameWindow.user.minusBugs(items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch()-1));
+            GameWindow.user.setBugsPerSecond(items.get(actualPage).getBugsGrowth());
+            currentItemUpdate();
+        });
+
+            //zamykanie okna gry
         exitButton.setOnAction(e -> View.exitGame());
 
-        //powrot do okna gry
+            //powrot do okna gry
         returnButton.setOnAction(e -> View.startGame());
 
-    //Layout
-        //tworzenie layoutu
+        //Layout
+            //tworzenie layoutu
         VBox layout = new VBox(10);
         layout.setPadding(new Insets(20, 20, 20, 20));
 
-        //dodanie kontrolek do layoutu
+            //dodanie kontrolek do layoutu
         layout.getChildren().addAll(
                 bugsLabel,
                 label,
@@ -82,12 +100,13 @@ public class ShopWindow {
                 exitButton
         );
 
-        //rozmiar okna
+            //rozmiar okna
         window = new Scene(layout, 500, 500);
 
 
         return window;
-
+    }
+}
 //
 
 //     //
@@ -139,6 +158,3 @@ public class ShopWindow {
 //        }));
 //        window.addComponent(panel);
 
-    }
-
-}
