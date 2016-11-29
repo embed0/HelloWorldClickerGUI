@@ -19,6 +19,8 @@ public class ShopWindow {
     Label przyrostBugow;
     Label cena;
     Button kupButton;
+    Button prevPageButton;
+    Button nextPageButton;
 
     public ShopWindow() {
         Items i = new Items();
@@ -26,10 +28,15 @@ public class ShopWindow {
         actualPage = 0;
         cena = new Label();
         kupButton = new Button("KUP");
+        nazwaItemu = new Label();
+        ikonaItemu = new Label();
+        posiadanaIlosc = new Label();
+        przyrostBugow = new Label();
+        prevPageButton = new Button ("POPRZEDNIE");
+        nextPageButton = new Button ("NASTĘPNE");
     }
 
     public void cenaUpdate(int color) {
-        System.out.print("\ncenaUpdate");
         cena.setText("cena: " + (items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch())));
         // 1 to zielona , 0 to czerwona
         if (color == 1)
@@ -41,25 +48,30 @@ public class ShopWindow {
         View.gameWindow.bugsLabelUpdate();
         bugsLabel = GameWindow.bugsLabel;
         label = new Label("W sklepie możesz zatrudnić osoby, które pomogą Ci produkować bugi");
-        nazwaItemu = new Label(items.get(actualPage).getName());
-        ikonaItemu = new Label(items.get(actualPage).getIcon());
-        posiadanaIlosc = new Label("posiadana ilość: " + items.get(actualPage).getHowMuch());
-        przyrostBugow = new Label("przyrost bugów: " + items.get(actualPage).getBugsGrowth());
-        if (GameWindow.user.getBugs() < (items.get(actualPage).getBasicPrice() * (items.get(actualPage).getHowMuch() + 1) + 1)) {
+        nazwaItemu.setText(items.get(actualPage).getName());
+        ikonaItemu.setText(items.get(actualPage).getIcon());
+        posiadanaIlosc.setText("posiadana ilość: " + items.get(actualPage).getHowMuch());
+        przyrostBugow.setText("przyrost bugów: " + items.get(actualPage).getBugsGrowth());
+        if (GameWindow.user.getBugs() < (items.get(actualPage).getBasicPrice() * (items.get(actualPage).getHowMuch() + 1) )) {
             cenaUpdate(0);
             kupButton.setDisable(true);
         } else {
-            System.out.print("tu robie\n");
             cenaUpdate(1);
             kupButton.setDisable(false);
         }
+
+        if (actualPage == 0) prevPageButton.setDisable(true);
+            else  prevPageButton.setDisable(false);
+
+        if(actualPage < 5) nextPageButton.setDisable(false);
+            else  nextPageButton.setDisable(true);
+
     }
 
     public Scene createShopWindow() {
 
-        //Wczytanie obecnego przedmiotu wraz z kontrolkami
+        //Wczytanie obecnego przedmiotu + kontrolki
         currentItemUpdate();
-
 
         Button returnButton = new Button("POWRÓT");
         Button exitButton = new Button("WYJŚCIE");
@@ -74,6 +86,18 @@ public class ShopWindow {
             GameWindow.user.setBugsPerSecond(items.get(actualPage).getBugsGrowth());
             currentItemUpdate();
         });
+
+            //następna i porzednia strona
+        prevPageButton.setOnAction(e -> {
+           actualPage--;
+           currentItemUpdate();
+        });
+
+        nextPageButton.setOnAction(e -> {
+            actualPage++;
+            currentItemUpdate();
+        });
+
 
             //zamykanie okna gry
         exitButton.setOnAction(e -> View.exitGame());
@@ -96,6 +120,8 @@ public class ShopWindow {
                 przyrostBugow,
                 cena,
                 kupButton,
+                prevPageButton,
+                nextPageButton,
                 returnButton,
                 exitButton
         );
@@ -107,21 +133,7 @@ public class ShopWindow {
         return window;
     }
 }
-//
 
-//     //
-//        else{
-//            row1.addComponent(new Label("cena: " + (items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch())), Terminal.Color.GREEN));
-//            row1.addComponent(new Button("KUP!", new Action() {
-//                    @Override
-//                    public void doAction() {
-//                        items.get(actualPage).addItem();
-//                        GameWindow.user.setItemCount(1);
-//                        GameWindow.user.minusBugs(items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch()-1));
-//                        GameWindow.user.setBugsPerSecond(items.get(actualPage).getBugsGrowth());
-//                        createShopWindow();
-//                    }
-//                }));}
 //        window.addComponent(row1);
 //        Panel nxtPrvPanel = new Panel("", Panel.Orientation.HORISONTAL);
 //        if (actualPage > 0){
