@@ -20,7 +20,7 @@ public class GameWindow {
     static ArrayList <String> code;
     static ArrayList <String> rootMsg;
     public static String lastLine;
-    static int tmp;
+    static int tmp, rootmsgsize;
     static FileInputStream file;
 
 
@@ -102,7 +102,7 @@ public class GameWindow {
             rootTextArea.appendText("\n" + line);
         }
 
-
+        rootmsgsize = rootMsg.size();
 
         //  Czytanie i dodawanie nowego kodu
 
@@ -125,7 +125,6 @@ public class GameWindow {
                         GameWindow.user.addBug();
                     }
                     konsolaTextArea.appendText(((char) tmp) + "");
-
                 }
                 else {
                     try {
@@ -134,70 +133,17 @@ public class GameWindow {
                         e.printStackTrace();
                     }
                 }
+
+                if( rootmsgsize != user.getRootMessages().size())
+                {
+                    rootmsgsize = user.getRootMessages().size();
+                    rootTextArea.appendText("\n" + user.getRootMessages().get(rootmsgsize - 1));
+                }
+
             }
         });
 
 
         return window;
-
-
-//        stage.removeAllComponents();
-//        stage = null;
-//        stage = new Window("");
-//        stage.setSoloWindow(true);
-//        stage.setWindowSizeOverride(new TerminalSize(100,100));
-//        stage.addWindowListener(keyStrokeListener);
-
-//        Panel statsPanel = new Panel("", Panel.Orientation.HORISONTAL);
-//        Panel bugsPanel = new Panel("bugs");
-//        bugsPanel.addComponent(new Label(Float.toString(user.getBugs()), Terminal.Color.MAGENTA));
-//        statsPanel.addComponent(bugsPanel);
-//        Panel perSecondPanel = new Panel("modyfikator bugów");
-//        perSecondPanel.addComponent(new Label("+ " + Double.toString(user.getBugsPerSecond()), Terminal.Color.MAGENTA));
-//        statsPanel.addComponent(perSecondPanel);
-//        stage.addComponent(statsPanel);
-//
-//        code = user.getUserCode();
-//
-//        Panel userConsolePanel = new Panel("konsola", Panel.Orientation.VERTICAL);
-//        userConsolePanel.addComponent(new Label("THE BEST IDE EVER", Terminal.Color.BLUE));
-//        userConsolePanel.addComponent(new Label("--------------------------------------------------------------------------------", Terminal.Color.BLUE));
-//
-//        //czytanie kodu z pliku i aktualizowanie przy kliknieciu
-//
-//        for(int i = 0; i < code.size(); i++)
-//            userConsolePanel.addComponent(new Label(code.get(i)));
-//        userConsolePanel.addComponent(new Label(lastLine));
-//        stage.addComponent(userConsolePanel);
-//
-//        Panel rootConsolePanel = new Panel("System output", Panel.Orientation.VERTICAL);
-//        rootMsg = user.getRootMessages();
-//        for (int i = 0; i < rootMsg.size(); i++)
-//            rootConsolePanel.addComponent(new Label(rootMsg.get(i), Terminal.Color.RED));
-//        stage.addComponent(rootConsolePanel);
-//
-//        Panel optionsPanel = new Panel("opcje", Panel.Orientation.HORISONTAL);
-//
-//        optionsPanel.addComponent(new Button("sklep", new Action() {
-//            @Override
-//            public void doAction() {
-//                View.shopView();
-//            }
-//        }));
-//        optionsPanel.addComponent(new Button("osiągnięcia", new Action() {
-//            @Override
-//            public void doAction() {
-//                View.achievmentsView();
-//            }
-//        }));
-//        optionsPanel.addComponent(new Button("zakończ", new Action() {
-//            @Override
-//            public void doAction() {
-//                stage.close();
-//                View.startWindow.closeWindow();
-//                View.exitGame();
-//            }
-//        }));
-//        stage.addComponent(optionsPanel);
     }
 }
