@@ -50,8 +50,8 @@
           <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/User.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="306">
-                  <caret line="67" column="30" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
+                <state relative-caret-position="986">
+                  <caret line="74" column="20" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="20" />
                   <folding />
                 </state>
               </provider>
@@ -112,22 +112,10 @@
           <file leaf-file-name="GameWindow.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/GameWindow.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="286">
-                  <caret line="104" column="17" selection-start-line="104" selection-start-column="17" selection-end-line="104" selection-end-column="17" />
+                <state relative-caret-position="218">
+                  <caret line="96" column="42" selection-start-line="96" selection-start-column="42" selection-end-line="96" selection-end-column="42" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="KeyStrokeListener.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/KeyStrokeListener.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="663">
-                  <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="13" />
-                  <folding>
-                    <element signature="imports" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -166,8 +154,8 @@
         <option value="$PROJECT_DIR$/src/AchievmentsWindow.java" />
         <option value="$PROJECT_DIR$/src/ShopWindow.java" />
         <option value="$PROJECT_DIR$/src/KeyStrokeListener.java" />
-        <option value="$PROJECT_DIR$/src/GameWindow.java" />
         <option value="$PROJECT_DIR$/src/User.java" />
+        <option value="$PROJECT_DIR$/src/GameWindow.java" />
       </list>
     </option>
   </component>
@@ -704,12 +692,12 @@
       <workItem from="1480348316692" duration="5000" />
       <workItem from="1480361969844" duration="31000" />
       <workItem from="1480365722031" duration="3297000" />
-      <workItem from="1480415752721" duration="2671000" />
+      <workItem from="1480415752721" duration="3699000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86915000" />
+    <option name="totallyTimeSpent" value="87943000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1374" y="-469" width="1382" height="784" extended-state="6" />
@@ -845,9 +833,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -918,9 +904,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1024,7 +1008,6 @@
     <entry file="file://$PROJECT_DIR$/src/crapCode" />
     <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/src.zip!/java/util/ArrayList.java" />
     <entry file="jar://$PROJECT_DIR$/../lanterna-2.1.7.jar!/com/googlecode/lanterna/gui/component/Button.class" />
-    <entry file="file://$PROJECT_DIR$/crapCode.txt" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/jre/lib/ext/lanterna-2.1.7.jar!/com/googlecode/lanterna/gui/GUIScreen.class" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/jre/lib/ext/lanterna-2.1.7.jar!/com/googlecode/lanterna/gui/Window.class" />
     <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/src.zip!/sun/misc/Unsafe.java" />
@@ -1100,16 +1083,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KeyStrokeListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-595">
@@ -1128,18 +1101,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/crapCode.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-510">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KeyStrokeListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="67" column="30" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
+        <state relative-caret-position="986">
+          <caret line="74" column="20" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GameWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="104" column="17" selection-start-line="104" selection-start-column="17" selection-end-line="104" selection-end-column="17" />
+        <state relative-caret-position="218">
+          <caret line="96" column="42" selection-start-line="96" selection-start-column="42" selection-end-line="96" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

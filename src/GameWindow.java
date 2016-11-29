@@ -46,17 +46,22 @@ public class GameWindow {
         //Kontrolki
         Label label = new Label("Tu bedzie sie gralo");
         TextArea konsolaTextArea = new TextArea();
+        TextArea rootTextArea = new TextArea();
         Button sklepButton = new Button("SKLEP");
         Button achievementsButton = new Button("OSIĄGNIĘCIA");
         Button exitButton = new Button("WYJŚCIE");
 
-        //Wczytywanie kodu do konsoli
 
 
         //Ustawienia parametów kontrolek
-        konsolaTextArea.setPrefWidth(300);
-        konsolaTextArea.setPrefHeight(500);
-        konsolaTextArea.setEditable(false);
+            konsolaTextArea.setPrefWidth(300);
+            konsolaTextArea.setPrefHeight(500);
+            konsolaTextArea.setEditable(false);
+
+            rootTextArea.setPrefWidth(300);
+            rootTextArea.setPrefHeight(250);
+            rootTextArea.setEditable(false);
+
         //Akcje przycisków
         //zamykanie okna gry
         exitButton.setOnAction(e -> View.exitGame());
@@ -75,26 +80,25 @@ public class GameWindow {
         layout.setPadding(new Insets(20, 20, 20, 20));
 
         //dodanie kontrolek do layoutu
-        layout.getChildren().addAll(konsolaTextArea, label, sklepButton, achievementsButton, exitButton);
+        layout.getChildren().addAll(konsolaTextArea, rootTextArea, label, sklepButton, achievementsButton, exitButton);
 
         //rozmiar okna
-        window = new Scene(layout, 500, 300);
-
-
-        //POTRZEBNE KOMENTARZE
-        StringBuilder s = new StringBuilder(GameWindow.lastLine);
-
+        window = new Scene(layout, 500, 500);
 
 
         //Nasluchiwanie klikania
+        //  Wczytanie kodu juz napisanego do konsoli
         code = user.getUserCode();
 
         for (String line : code)
         {
             konsolaTextArea.appendText("\n" + line);
         }
-        konsolaTextArea.appendText(lastLine);
+        konsolaTextArea.appendText("\n" + lastLine);
 
+        //  Czytanie i dodawanie nowego kodu
+
+        StringBuilder s = new StringBuilder(GameWindow.lastLine);
         konsolaTextArea.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -113,7 +117,6 @@ public class GameWindow {
                         GameWindow.user.addBug();
                     }
                     konsolaTextArea.appendText(((char) tmp) + "");
-
 
                 }
                 else {
