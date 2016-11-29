@@ -32,7 +32,6 @@ public class ShopWindow {
         cena = new Label();
         kupButton = new Button("KUP");
         nazwaItemu = new Label();
-        //ikonaItemu = new Label();
         ikonaItemu = new ImageView();
         posiadanaIlosc = new Label();
         przyrostBugow = new Label();
@@ -40,12 +39,14 @@ public class ShopWindow {
         nextPageButton = new Button ("NASTĘPNE");
     }
 
-    public void cenaUpdate(int color) {
+    public float cenaUpdate(int color) {
+
         cena.setText("cena: " + (items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch())));
         // 1 to zielona , 0 to czerwona
-        if (color == 1)
-            cena.setTextFill(Color.GREEN);
-        else cena.setTextFill(Color.RED);
+        if (color == 1) cena.setTextFill(Color.GREEN);
+        if (color == 0) cena.setTextFill(Color.RED);
+
+        return (items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch()));
     }
 
     public void currentItemUpdate() {
@@ -53,13 +54,11 @@ public class ShopWindow {
         bugsLabel = GameWindow.bugsLabel;
         label = new Label("W sklepie możesz zatrudnić osoby, które pomogą Ci produkować bugi");
         nazwaItemu.setText(items.get(actualPage).getName());
-
-        //ikonaItemu.setText(items.get(actualPage).getIcon());
         ikonaItemu.setImage(new Image(items.get(actualPage).getIcon()));
-
         posiadanaIlosc.setText("posiadana ilość: " + items.get(actualPage).getHowMuch());
         przyrostBugow.setText("przyrost bugów: " + items.get(actualPage).getBugsGrowth());
-        if (GameWindow.user.getBugs() < (items.get(actualPage).getBasicPrice() * (items.get(actualPage).getHowMuch() + 1) )) {
+
+        if (GameWindow.user.getBugs() < cenaUpdate(3)) {
             cenaUpdate(0);
             kupButton.setDisable(true);
         } else {
