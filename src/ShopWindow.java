@@ -3,6 +3,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 import java.util.List;
 
@@ -13,8 +14,6 @@ public class ShopWindow {
 
 
     public ShopWindow() {
-//        window = new Window("Sklep");
-//        window.setSoloWindow(true);
         Items i = new Items();
         items = i.getItems();
         actualPage = 0;
@@ -24,7 +23,36 @@ public class ShopWindow {
 
 
     //Kontrolki
-        Label label = GameWindow.bugsLabel;
+        Label bugsLabel = GameWindow.bugsLabel;
+        Label label = new Label("W sklepie możesz zatrudnić osoby, które pomogą Ci produkować bugi");
+        Label nazwaItemu = new Label(items.get(actualPage).getName());
+        Label ikonaItemu = new Label(items.get(actualPage).getIcon());
+        Label posiadanaIlosc = new Label("posiadana ilość: " + items.get(actualPage).getHowMuch());
+        Label przyrostBugow = new Label("przyrost bugów: " + items.get(actualPage).getBugsGrowth());
+        Label cena = new Label("cena: " + (items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch())));
+        Button kupButton = new Button("KUP");
+
+
+        if (GameWindow.user.getBugs() < (items.get(actualPage).getBasicPrice() * (items.get(actualPage).getHowMuch()+1) +1))
+        {
+            cena.setTextFill(Color.RED);
+            kupButton.setDisable(true);
+        }
+        else
+        {
+            cena.setTextFill(Color.GREEN);
+            kupButton.setDisable(false);
+            kupButton.setOnAction(e -> {
+                        items.get(actualPage).addItem();
+                        GameWindow.user.setItemCount(1);
+                        GameWindow.user.minusBugs(items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch()-1));
+                        GameWindow.user.setBugsPerSecond(items.get(actualPage).getBugsGrowth());
+                        View.gameWindow.bugsLabelUpdate();
+            });
+        }
+
+
+
         Button returnButton = new Button("POWRÓT");
         Button exitButton = new Button("WYJŚCIE");
 
@@ -41,34 +69,28 @@ public class ShopWindow {
         layout.setPadding(new Insets(20, 20, 20, 20));
 
         //dodanie kontrolek do layoutu
-        layout.getChildren().addAll(label, exitButton, returnButton);
+        layout.getChildren().addAll(
+                bugsLabel,
+                label,
+                nazwaItemu,
+                ikonaItemu,
+                posiadanaIlosc,
+                przyrostBugow,
+                cena,
+                kupButton,
+                returnButton,
+                exitButton
+        );
 
         //rozmiar okna
-        window = new Scene(layout, 300, 200);
+        window = new Scene(layout, 500, 500);
 
 
         return window;
-//        window.removeAllComponents();
-//        Panel statsPanel = new Panel("", Panel.Orientation.HORISONTAL);
-//        Panel bugsPanel = new Panel("bugs");
-//        bugsPanel.addComponent(new Label(Float.toString(GameWindow.user.getBugs()), Terminal.Color.MAGENTA));
-//        statsPanel.addComponent(bugsPanel);
-//        Panel perSecondPanel = new Panel("modyfikator bugów");
-//        perSecondPanel.addComponent(new Label("+ " + Double.toString(GameWindow.user.getBugsPerSecond()), Terminal.Color.MAGENTA));
-//        statsPanel.addComponent(perSecondPanel);
-//        window.addComponent(statsPanel);
-//        Panel p = new Panel();
-//        p.addComponent(new Label("W sklepie możesz zatrudnić osoby, które pomogą Ci produkować bugi"));
-//        window.addComponent(p);
-//        Panel row1 = new Panel(items.get(actualPage).getName(), Panel.Orientation.VERTICAL);
-//        row1.addComponent(new Label(items.get(actualPage).getIcon(), Terminal.Color.BLUE));
-//        row1.addComponent(new Label("posiadana ilość: " + items.get(actualPage).getHowMuch()));
-//        row1.addComponent(new Label("przyrost bugów: " + items.get(actualPage).getBugsGrowth()));
-//        if (GameWindow.user.getBugs() < (items.get(actualPage).getBasicPrice() * (items.get(actualPage).getHowMuch()+1) +1)){
-//            row1.addComponent(new Label("cena: " + (items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch())), Terminal.Color.RED));
-//            row1.addComponent(new Button("KUP!"));
-//        }
+
 //
+
+//     //
 //        else{
 //            row1.addComponent(new Label("cena: " + (items.get(actualPage).getBasicPrice() + (items.get(actualPage).getHowMuch())), Terminal.Color.GREEN));
 //            row1.addComponent(new Button("KUP!", new Action() {
