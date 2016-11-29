@@ -3,7 +3,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 
@@ -32,6 +32,11 @@ public class GameWindow {
         user = new User();
         keyStrokeListener = new KeyStrokeListener();
 
+        try {
+            file = new FileInputStream("crapCode.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         createGameWindow();
     }
@@ -40,7 +45,7 @@ public class GameWindow {
 
         //Kontrolki
         Label label = new Label("Tu bedzie sie gralo");
-        TextField konsolaTextField = new TextField();
+        TextArea konsolaTextArea = new TextArea();
         Button sklepButton = new Button("SKLEP");
         Button achievementsButton = new Button("OSIĄGNIĘCIA");
         Button exitButton = new Button("WYJŚCIE");
@@ -49,9 +54,9 @@ public class GameWindow {
 
 
         //Ustawienia parametów kontrolek
-        konsolaTextField.setPrefWidth(300);
-        konsolaTextField.setPrefHeight(500);
-        konsolaTextField.setEditable(false);
+        konsolaTextArea.setPrefWidth(300);
+        konsolaTextArea.setPrefHeight(500);
+        konsolaTextArea.setEditable(false);
         //Akcje przycisków
         //zamykanie okna gry
         exitButton.setOnAction(e -> View.exitGame());
@@ -70,29 +75,27 @@ public class GameWindow {
         layout.setPadding(new Insets(20, 20, 20, 20));
 
         //dodanie kontrolek do layoutu
-        layout.getChildren().addAll(konsolaTextField, label, sklepButton, achievementsButton, exitButton);
+        layout.getChildren().addAll(konsolaTextArea, label, sklepButton, achievementsButton, exitButton);
 
         //rozmiar okna
         window = new Scene(layout, 500, 300);
 
 
-        //czytanie pliku
+        //POTRZEBNE KOMENTARZE
         StringBuilder s = new StringBuilder(GameWindow.lastLine);
-
-        try {
-            file = new FileInputStream("crapCode.txt");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
 
 
 
         //Nasluchiwanie klikania
         code = user.getUserCode();
 
+        for (String line : code)
+        {
+            konsolaTextArea.appendText("\n" + line);
+        }
+        konsolaTextArea.appendText(lastLine);
 
-        konsolaTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        konsolaTextArea.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 try {
@@ -102,15 +105,14 @@ public class GameWindow {
                 }
                 if (tmp != -1) {
                     if (tmp == 10) {
-                        //GameWindow.user.addCode(GameWindow.lastLine);
+                        GameWindow.user.addCode(GameWindow.lastLine);
                         lastLine = "";
+                        s.setLength(0);
                     } else {
                         GameWindow.lastLine = s.append((char) tmp).toString();
                         GameWindow.user.addBug();
                     }
-                    for(int i = 0; i < code.size(); i++)
-                        konsolaTextField.setText(code.get(i));
-                    konsolaTextField.appendText(lastLine);
+                    konsolaTextArea.appendText(((char) tmp) + "");
 
 
                 }

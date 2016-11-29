@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 
 public class User {
     private float bugs;
@@ -33,10 +31,8 @@ public class User {
         userCode.add("public class HelloWorld {");
         userCode.add("    public static void main(String[] args) {");
         userCode.add("        System.out.println(\"Hello, World\");");
-        userCode.add("}");
-        userCode.add("}");
-        for (int i = userCode.size(); i < 9; i++)
-            userCode.add(" ");
+        userCode.add("    }");
+        userCode.add("}\n");
     }
 
     public void minusBugs(float a) {
