@@ -1,7 +1,12 @@
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
@@ -15,23 +20,24 @@ public class AchievmentsWindow {
     }
 
     public Scene createAchievmentsWindow() {
+        ImageView puchar = new ImageView();
+        puchar.setImage(new Image("puchar.png"));
 
-        String trophy = new String("             ___________\n" + "            " +
-                                                "'._==_==_=_.'\n" +
-                                    "            .-\\:      /-.\n" +
-                                    "           | (|:.     |) |\n" +
-                                    "            '-|:.     |-'\n" +
-                                    "              \\::.    /\n" +
-                                    "               '::. .'\n" +
-                                    "                 ) (\n" +
-                                    "               _.' '._\n" +
-                                    "              `\"\"\"\"\"\"\"`\n");
 
     //Kontrolki
-        Label label = new Label(trophy);
-        Label label1 = new Label("Tu bedzie sie osiągało ;P");
+        Label label = new Label("Zdobyte osiągnięcia. Gratuluję!");
         Button returnButton = new Button("POWRÓT");
         Button exitButton = new Button("WYJŚCIE");
+
+        achievments = GameWindow.user.getAchievmentsList();
+        ObservableList<String> items = FXCollections.observableArrayList();
+        ListView<String> osiagnieciaList = new ListView<>(items);
+        for (int i = 0; i < achievments.size(); i++)
+        {
+            osiagnieciaList.getItems().add(i, achievments.get(i));
+        }
+
+        osiagnieciaList.setItems(items);
 
     //Akcje przycisków
         //zamykanie okna gry
@@ -46,7 +52,7 @@ public class AchievmentsWindow {
         layout.setPadding(new Insets(20, 20, 20, 20));
 
         //dodanie kontrolek do layoutu
-        layout.getChildren().addAll(label, label1, exitButton, returnButton);
+        layout.getChildren().addAll(puchar, label, osiagnieciaList, exitButton, returnButton);
 
         //rozmiar okna
         window = new Scene(layout, 300, 500);
@@ -54,68 +60,6 @@ public class AchievmentsWindow {
 
 
         return window;
-//        Table table = new Table(3);
-//        Component[] row1 = new Component[3];
-//        for (int i = 0; i < row1.length; i++){
-//            row1[i] = new Label(trophy, Terminal.Color.YELLOW);
-//        }
-//        table.addRow(row1);
-//        window.addComponent(table);
-//
-//        Panel p = new Panel();
-//        p.addComponent(new Label("Zdobyte osiągnięcia. Gratuluję!", Terminal.Color.MAGENTA));
-//        window.addComponent(p);
-//
-//        Panel achPanel = new Panel("Osiągnięcia");
-//        achievments = GameWindow.user.getAchievmentsList();
-//        if (achievments.size() < ((page + 1) * 3)){
-//            for (int i = page * 3; i < achievments.size(); i++)
-//                achPanel.addComponent(new Label(achievments.get(i)));
-//        }
-//        else {
-//            for (int i = page * 3; i < ((page + 1) * 3); i++)
-//                achPanel.addComponent(new Label(achievments.get(i)));
-//        }
-//        window.addComponent(achPanel);
-//
-//
-//        Panel nextPrevPanel = new Panel("", Panel.Orientation.HORISONTAL);
-//        if (page > 0){
-//            nextPrevPanel.addComponent(new Button("previous", new Action() {
-//                @Override
-//                public void doAction() {
-//                    page --;
-//                    createAchievmentsWindow();
-//                }
-//            }));
-//        }
-//        if (achievments.size() > ((page + 1) * 3)) {
-//            nextPrevPanel.addComponent(new Button("next", new Action() {
-//                @Override
-//                public void doAction() {
-//                    page ++;
-//                    createAchievmentsWindow();
-//                }
-//            }));
-//        }
-//        if (achievments!= null)
-//            window.addComponent(nextPrevPanel);
-//
-//        Panel panel = new Panel("", Panel.Orientation.HORISONTAL);
-//        panel.addComponent(new Button("powrót", new Action() {
-//            @Override
-//            public void doAction() {
-//                View.startGame();
-//            }
-//        }));
-//        panel.addComponent(new Button("zakończ grę", new Action() {
-//            @Override
-//            public void doAction() {
-//                //View.exitGame();
-//            }
-//        }));
-//        window.addComponent(panel);
-//
     }
 
 }
