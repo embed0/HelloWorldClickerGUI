@@ -1,0 +1,48 @@
+{
+	"items": [
+
+		{
+			"name": "Palec do pisania",
+			"basicPrice": 1,
+			"bugsGrowth": 1,
+			"icon": "1.png"
+		},
+
+		{
+			"name": "Programista senior",
+			"basicPrice": 50,
+			"bugsGrowth": 5,
+			"icon": "2.png"
+		},
+
+		{
+			"name": "Programista junior",
+			"basicPrice": 150,
+			"bugsGrowth": 12,
+			"icon": "3.png"
+		},
+
+
+		{
+			"name": "Student",
+			"basicPrice": 280,
+			"bugsGrowth": 20,
+			"icon": "4.png"
+		},
+
+		{
+			"name": "Firma",
+			"basicPrice": 400,
+			"bugsGrowth": 25,
+			"icon": "5.png"
+		},
+
+		{
+			"name": "Virusy",
+			"basicPrice": 1050,
+			"bugsGrowth": 50,
+			"icon": "6.png"
+		}
+
+	]
+}
