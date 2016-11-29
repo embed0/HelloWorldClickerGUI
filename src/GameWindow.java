@@ -44,7 +44,7 @@ public class GameWindow {
     public static Scene createGameWindow(){
 
         //Kontrolki
-        Label label = new Label("Tu bedzie sie gralo");
+        Label label = new Label("Ilosc Bugow: 0");
         TextArea konsolaTextArea = new TextArea();
         TextArea rootTextArea = new TextArea();
         Button sklepButton = new Button("SKLEP");
@@ -80,7 +80,7 @@ public class GameWindow {
         layout.setPadding(new Insets(20, 20, 20, 20));
 
         //dodanie kontrolek do layoutu
-        layout.getChildren().addAll(konsolaTextArea, rootTextArea, label, sklepButton, achievementsButton, exitButton);
+        layout.getChildren().addAll(label, konsolaTextArea, rootTextArea,  sklepButton, achievementsButton, exitButton);
 
         //rozmiar okna
         window = new Scene(layout, 600, 500);
@@ -134,11 +134,16 @@ public class GameWindow {
                     }
                 }
 
+                // dodawanie nowych powiadomien
                 if( rootmsgsize != user.getRootMessages().size())
                 {
                     rootmsgsize = user.getRootMessages().size();
                     rootTextArea.appendText("\n" + user.getRootMessages().get(rootmsgsize - 1));
                 }
+
+                // zmiana ilosci bugow
+                label.setText("Ilosc Bugow:" + user.getBugs());
+
 
             }
         });
