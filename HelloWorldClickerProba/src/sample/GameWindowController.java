@@ -93,6 +93,11 @@ public class GameWindowController implements Initializable {
                     if (Controller.tmp == 10) {
                         Controller.user.addCode(Controller.lastLine);
                         Controller.lastLine = "";
+                        konsolaTextArea.clear();
+                        for (String line : Controller.user.getUserCode())
+                        {
+                            konsolaTextArea.appendText("\n" + line);
+                        }
                         s.setLength(0);
                     } else {
                         Controller.lastLine = s.append((char) Controller.tmp).toString();
@@ -109,10 +114,15 @@ public class GameWindowController implements Initializable {
                 }
 
                 // dodawanie nowych powiadomien
-                if( Controller.rootmsgsize != Controller.user.getRootMessages().size())
+                if( User.newMessage)
                 {
+                    rootTextArea.clear();
                     Controller.rootmsgsize = Controller.user.getRootMessages().size();
-                    rootTextArea.appendText("\n" + Controller.user.getRootMessages().get(Controller.rootmsgsize - 1));
+                    for(String line : Controller.user.getRootMessages()){
+                        rootTextArea.appendText("\n" + line);
+                    }
+                    User.newMessage = false;
+                    //rootTextArea.appendText("\n" + Controller.user.getRootMessages().get(Controller.rootmsgsize - 1));
                 }
 
                 // zmiana ilosci bugow
@@ -134,7 +144,9 @@ public class GameWindowController implements Initializable {
     }
 
     public void showAchievments () {
+
         Main.stage.setScene(achievmentsScene);
         Main.stage.show();
+        AchievmentsWindowController.setTextAchievments();
     }
 }

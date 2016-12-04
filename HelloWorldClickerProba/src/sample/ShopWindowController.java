@@ -5,9 +5,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
+import java.io.File;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -37,8 +39,6 @@ public class ShopWindowController implements Initializable {
     Button prevPageButton;
     @FXML
     Button nextPageButton;
-    @FXML
-    Button exit;
 
     private Scene window;
     private List<Item> items;
@@ -49,7 +49,6 @@ public class ShopWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         powrot.setOnAction(actionEvent -> backToGame());
-        exit.setOnAction(actionEvent -> Main.stage.close());
         //klikniecie w przycisku KUP
         kupButton.setOnAction(e -> {
             items.get(actualPage).addItem();
@@ -97,7 +96,14 @@ public class ShopWindowController implements Initializable {
     public void currentItemUpdate() {
         bugsLabelUpdate();
         nazwaItemu.setText(items.get(actualPage).getName());
-//        ikonaItemu.setImage(new Image(items.get(actualPage).getIcon()));
+        //System.out.println(items.get(actualPage).getIcon());
+        File imageFile = new File("1.png");
+        System.out.println(imageFile.getAbsolutePath());
+        if (imageFile.exists()) {
+            Image image = new Image("file:" + imageFile.getAbsolutePath());
+            ikonaItemu.setImage(image);
+        }
+        //ikonaItemu.setImage("file:/home/ag/Pobrane/HelloWorldClickerProba/src/sample/1.png");
         posiadanaIlosc.setText("posiadana ilość: " + items.get(actualPage).getHowMuch());
         przyrostBugow.setText("przyrost bugów: " + items.get(actualPage).getBugsGrowth());
 

@@ -12,6 +12,7 @@ public class User {
     public ArrayList<String> achievmentsList;
     private int itemCount, itemThreshold;
     //achievments, items
+    static boolean newMessage;
 
     public User(){
         bugs = 0;
@@ -19,6 +20,7 @@ public class User {
         countMode = 1;
         bugThreshold = 100;
         itemCount = 0;
+        newMessage = false;
 
         bugsPerSecond = 1;
         achievments = new Achievments();
@@ -56,7 +58,7 @@ public class User {
     }
 
     public void addCode(String code){
-        if (userCode.size() > 8)
+        if (userCode.size() > 10)
             userCode.remove(0);
         userCode.add(code);
     }
@@ -72,9 +74,11 @@ public class User {
     }
 
     public void addMessage(String msg){
-        //if (rootMessages.size() > 3)
-        // rootMessages.remove(0);
+        if (rootMessages.size() > 3)
+         rootMessages.remove(0);
         rootMessages.add(msg);
+        newMessage = true;
+
     }
     public double getBugsPerSecond () {
         return bugsPerSecond;

@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AchievmentsWindowController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" styleClass="panel-style" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AchievmentsWindowController">
    <children>
-      <Button fx:id="powrot" layoutX="71.0" layoutY="304.0" mnemonicParsing="false" text="Button" />
-      <Button fx:id="exitButton" layoutX="279.0" layoutY="317.0" mnemonicParsing="false" text="exit" />
-      <Label layoutX="22.0" layoutY="14.0" text="Zdobyte osiągnięcia. Gratuluję!" />
-      <ImageView fx:id="puchar" fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="powrot" layoutX="420.0" layoutY="522.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Powrót" textFill="#40b92c">
+         <font>
+            <Font name="FreeMono" size="24.0" />
+         </font></Button>
+      <Label layoutX="74.0" layoutY="30.0" text="Zdobyte osiągnięcia. Gratuluję!" textFill="#40c92b">
+         <font>
+            <Font name="FreeMono" size="22.0" />
+         </font></Label>
+      <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="30.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@trophy.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="225.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@trophy.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="420.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@trophy.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="achievmentText" alignment="TOP_LEFT" layoutX="38.0" layoutY="260.0" prefHeight="236.0" prefWidth="534.0" textFill="#40c92b" wrapText="true">
+         <font>
+            <Font name="FreeMono" size="20.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

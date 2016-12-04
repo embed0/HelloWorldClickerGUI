@@ -35,6 +35,7 @@ public class Items {
                         (Long)slide.get("bugsGrowth"),
                         (String)slide.get("icon")
                 );
+                System.out.println(item.getIcon());
                 itemsList.add(item);
             }
         } catch (FileNotFoundException e) {

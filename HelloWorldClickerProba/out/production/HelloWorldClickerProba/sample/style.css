@@ -1,0 +1,30 @@
+.panel-style {
+    -fx-background-color: #000000; -fx-border-color: #40c92b; -fx-border-insets: 10; -fx-border-width: 5;
+}
+
+.button {
+-fx-background-color: #000000; -fx-border-color: #40c92b; -fx-border-width: 3;
+}
+
+.text-area {
+    -fx-font-family: FreeMono;
+    -fx-font-size: 15;
+    -fx-border-color: #40c92b;
+    -fx-border-radius: 0;
+    -fx-border-width:3;
+    -fx-focus-color: transparent;
+    -fx-box-border: none;
+}
+
+
+.root-text{
+-fx-text-fill: #acadaf;
+}
+
+.user-text{
+-fx-text-fill: #40c92b;
+}
+
+.text-area .content {
+    -fx-background-color: #000000;
+}
